@@ -1,0 +1,21 @@
+﻿@model IEnumerable<GummyBearKingdom.Models.BlogPost>
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "GBK - Blog";
+}
+
+<h1>Our Products</h1>
+
+@Html.ActionLink("Create a new Post", "Create")
+@foreach (var post in Model)
+{
+    <div class="well blog-post">
+        <h2>@Html.DisplayFor(model => post.Title)</h2>
+        <h6 class="blog-date">
+            @Html.DisplayFor(model => post.Author) - 
+            @Html.DisplayFor(model => post.PostTime)
+        </h6>
+        <div class="well blog-content">@Html.DisplayFor(model => post.Content)</div>
+    </div>
+}

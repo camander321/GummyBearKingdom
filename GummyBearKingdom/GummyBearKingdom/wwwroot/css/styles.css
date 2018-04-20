@@ -16,3 +16,17 @@
 tbody>tr:hover {
     color:black;
 }
+
+.blog-post {
+    color:black;
+    padding:1em;
+}
+
+.blog-date {
+    color:gray;
+}
+
+.blog-content {
+    background-color:lightgray;
+    border-width:0px;
+}
