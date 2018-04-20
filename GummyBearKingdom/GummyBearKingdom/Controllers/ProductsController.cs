@@ -22,10 +22,23 @@ namespace GummyBearKingdom.Controllers
             return View(model);
         }
 
-        public IActionResult Details(int productId)
+        public IActionResult Details(int id)
         {
-            Product model = db.Products.FirstOrDefault(product => product.ProductId == productId);
+            Product model = db.Products.FirstOrDefault(product => product.ProductId == id);
             return View(model);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product product)
+        {
+            db.Products.Add(product);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
