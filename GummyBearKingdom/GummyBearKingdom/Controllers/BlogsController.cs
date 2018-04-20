@@ -15,7 +15,7 @@ namespace GummyBearKingdom.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View(db.BlogPosts.ToList());
+            return View(db.BlogPosts.OrderByDescending(model => model.PostTime).Take(10).ToList());
         }
 
         public IActionResult Details(int id)
