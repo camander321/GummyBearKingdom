@@ -40,5 +40,20 @@ namespace GummyBearKingdom.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Delete(int id)
+        {
+            Product model = db.Products.FirstOrDefault(product => product.ProductId == id);
+            return View(model);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            Product product = db.Products.FirstOrDefault(item => item.ProductId == id);
+            db.Products.Remove(product);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

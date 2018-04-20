@@ -1,0 +1,14 @@
+﻿@model GummyBearKingdom.Models.Product
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "GBK - Delete " + Model.Name;
+}
+
+<h1>Are Your Sure You Want to Delete '@Model.Name'</h1>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="I'm Sure, Delete" class="btn btn-danger">
+}
+<a href="/products"><button class="btn btn-success">I Changed My Mind</button></a>
