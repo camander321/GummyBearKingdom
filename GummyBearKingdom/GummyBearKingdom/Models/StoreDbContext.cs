@@ -10,10 +10,7 @@ namespace GummyBearKingdom.Models
     public class StoreDbContext : DbContext
     {
         public StoreDbContext() { }
-        //public DbSet<Experience> Experiences { get; set; }
-        //public DbSet<Location> Locations { get; set; }
-        //public DbSet<Person> Persons { get; set; }
-        //public DbSet<PersonExperience> PersonExperiences { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder
