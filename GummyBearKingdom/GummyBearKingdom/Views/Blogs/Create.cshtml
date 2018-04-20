@@ -1,0 +1,24 @@
+﻿@model GummyBearKingdom.Models.BlogPost
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "GBK - Create";
+}
+
+<h1>Create A New Post</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Title)<br>
+    @Html.EditorFor(model => model.Title)<br>
+
+    @Html.LabelFor(model => model.Author)<br>
+    @Html.EditorFor(model => model.Author)<br>
+
+    @Html.LabelFor(model => model.Content)<br>
+    @Html.TextAreaFor(model => model.Content)<br>
+
+    <input type="submit" value="Create" class="btn btn-success">
+
+    @Html.ActionLink("Return To Blog", "Index")
+}

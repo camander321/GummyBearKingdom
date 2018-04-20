@@ -17,5 +17,24 @@ namespace GummyBearKingdom.Controllers
         {
             return View(db.BlogPosts.ToList());
         }
+
+        public IActionResult Details(int id)
+        {
+            return View(db.BlogPosts.FirstOrDefault(model => model.BlogPostId == id));
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(BlogPost post)
+        {
+            post.PostTime = DateTime.Now;
+            db.Add(post);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -1,0 +1,14 @@
+﻿@model GummyBearKingdom.Models.BlogPost
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "GBK - " + Model.Title;
+}
+
+<h1>@Model.Title</h1>
+<h4 class="blog-date">@Model.Author - @Model.PostTime</h4>
+<p>@Model.Content</p>
+
+@Html.ActionLink("Return To Blog Posts", "Index") |
+@Html.ActionLink("Edit", "Edit", new { id = Model.BlogPostId }) |
+@Html.ActionLink("Delete", "Delete", new { id = Model.BlogPostId })

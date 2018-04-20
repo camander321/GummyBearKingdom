@@ -17,6 +17,17 @@ tbody>tr:hover {
     color:black;
 }
 
+.blog-title:hover {
+    text-decoration:underline;
+    color:blue;
+    cursor:pointer;
+}
+
+.blog-title {
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
 .blog-post {
     color:black;
     padding:1em;

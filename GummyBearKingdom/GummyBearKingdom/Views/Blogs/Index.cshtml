@@ -11,11 +11,10 @@
 @foreach (var post in Model)
 {
     <div class="well blog-post">
-        <h2>@Html.DisplayFor(model => post.Title)</h2>
+        <a href="/blogs/details/@post.BlogPostId"><h2 class="blog-title">@Html.DisplayFor(model => post.Title)</h2></a>
         <h6 class="blog-date">
             @Html.DisplayFor(model => post.Author) - 
             @Html.DisplayFor(model => post.PostTime)
         </h6>
-        <div class="well blog-content">@Html.DisplayFor(model => post.Content)</div>
     </div>
 }
