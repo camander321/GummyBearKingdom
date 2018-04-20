@@ -5,7 +5,7 @@
     ViewBag.Title = "GBK - Products";
 }
 
-<h1>This is in product index</h1>
+<h1>Our Products</h1>
 
 <table class="table table-striped table-hover">
     <thead>
@@ -22,8 +22,11 @@
         <tr>
             <td>@Html.DisplayFor(modelDivision => product.Name)</td>
             <td>@Html.DisplayFor(modelDivision => product.Cost)</td>
-            <td></td>
-            <td></td>
+            <td>@Html.ActionLink("Details", "Details", new { productId = product.ProductId })</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = product.ProductId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = product.ProductId })
+            </td>
         </tr>
         }
     </tbody>

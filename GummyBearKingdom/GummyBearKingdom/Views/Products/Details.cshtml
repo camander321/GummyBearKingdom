@@ -1,0 +1,14 @@
+﻿@model GummyBearKingdom.Models.Product
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "GBK - " + Model.Name;
+}
+
+<h1>@Model.Name</h1>
+<h4>@Model.Cost</h4>
+<p>@Model.Description</p>
+
+@Html.ActionLink("Return To Product List", "Index") |
+@Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
+@Html.ActionLink("Delete", "Delete", new { id = Model.ProductId })
