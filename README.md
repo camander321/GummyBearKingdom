@@ -5,7 +5,7 @@
 ## By Cameron Anderson
 
 # Description
-This is company website for a fictional company. It has CRUD functionality for products.
+This is company website for a fictional company. It has CRUD functionality for products and blog posts.
 
 ## Functionality
 ### User Stories
@@ -13,6 +13,9 @@ This is company website for a fictional company. It has CRUD functionality for p
   * create a project
   * edit projects
   * delete projects
+  * create a blog post
+  * edit blog post
+  * delete blog post
 
 ## Technologies Used
 * HTML
