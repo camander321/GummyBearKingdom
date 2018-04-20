@@ -55,5 +55,18 @@ namespace GummyBearKingdom.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult DeleteAll()
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("DeleteAll")]
+        public IActionResult DeleteAllConfirmed()
+        {
+            db.Products.RemoveRange(db.Products.ToList());
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

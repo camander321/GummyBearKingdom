@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.Title = "GBK - Delete All";
+}
+
+<h1>Are Your Sure You Want to Delete All Products? It's Probably A Bad Idea...</h1>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="I'm Sure, Delete All" class="btn btn-danger">
+}
+<a href="/products"><button class="btn btn-success">I Changed My Mind</button></a>

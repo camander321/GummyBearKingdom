@@ -8,7 +8,7 @@
 <h1>Our Products</h1>
 
 @Html.ActionLink("Add A New Product", "Create")
-<table class="table table-striped table-hover">
+<table class="table table-hover">
     <thead>
         <tr>
             <th>@Html.DisplayNameFor(model => model.Name)</th>
@@ -32,3 +32,4 @@
         }
     </tbody>
 </table>
+@Html.ActionLink("Delete All Products", "DeleteAll")
