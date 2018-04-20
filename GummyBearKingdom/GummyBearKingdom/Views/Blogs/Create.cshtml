@@ -16,7 +16,7 @@
     @Html.EditorFor(model => model.Author)<br>
 
     @Html.LabelFor(model => model.Content)<br>
-    @Html.TextAreaFor(model => model.Content)<br>
+    @Html.TextAreaFor(model => model.Content, new { cols = "80", rows = "10"})<br>
 
     <input type="submit" value="Create" class="btn btn-success">
 
