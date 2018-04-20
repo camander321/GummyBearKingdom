@@ -1,0 +1,27 @@
+﻿@model GummyBearKingdom.Models.Product
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "GBK - Edit " + Model.Name;
+}
+
+<h1>Edit @Model.Name</h1>
+
+@using (Html.BeginForm())
+
+{
+    @Html.HiddenFor(model => model.ProductId)<br />
+
+    @Html.LabelFor(model => model.Name)<br>
+    @Html.EditorFor(model => model.Name)<br>
+
+    @Html.LabelFor(model => model.Cost)<br>
+    @Html.EditorFor(model => model.Cost)<br>
+
+    @Html.LabelFor(model => model.Description)<br>
+    @Html.EditorFor(model => model.Description)<br>
+
+    <input type="submit" value="Save Changes" class="btn btn-success">
+
+    @Html.ActionLink("Return To Product List", "Index")
+}
