@@ -7,7 +7,7 @@ using GummyBearKingdom.Models;
 
 namespace GummyBearKingdom.Migrations
 {
-    [DbContext(typeof(StoreDbContext))]
+    [DbContext(typeof(GummyBearDbContext))]
     [Migration("20180420225907_RenameBlogPostId")]
     partial class RenameBlogPostId
     {

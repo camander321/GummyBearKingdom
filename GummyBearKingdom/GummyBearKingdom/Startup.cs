@@ -34,7 +34,7 @@ namespace GummyBearKingdom
         {
             services.AddMvc();
             services.AddEntityFrameworkMySql()
-            .AddDbContext<StoreDbContext>(options =>
+            .AddDbContext<GummyBearDbContext>(options =>
             options
             .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
         }

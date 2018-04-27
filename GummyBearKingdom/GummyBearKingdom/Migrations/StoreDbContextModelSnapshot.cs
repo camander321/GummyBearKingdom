@@ -7,7 +7,7 @@ using GummyBearKingdom.Models;
 
 namespace GummyBearKingdom.Migrations
 {
-    [DbContext(typeof(StoreDbContext))]
+    [DbContext(typeof(GummyBearDbContext))]
     partial class StoreDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

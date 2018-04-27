@@ -11,7 +11,7 @@ namespace GummyBearKingdom.Controllers
 {
     public class BlogsController : Controller
     {
-        private StoreDbContext db = new StoreDbContext();
+        private GummyBearDbContext db = new GummyBearDbContext();
         // GET: /<controller>/
         public IActionResult Index()
         {

@@ -7,9 +7,9 @@ using GummyBearKingdom;
 
 namespace GummyBearKingdom.Models
 {
-    public class StoreDbContext : DbContext
+    public class GummyBearDbContext : DbContext
     {
-        public StoreDbContext() { }
+        public GummyBearDbContext() { }
         public DbSet<Product> Products { get; set; }
         public DbSet<BlogPost> BlogPosts { get; set; }
 
@@ -17,7 +17,7 @@ namespace GummyBearKingdom.Models
             => optionsBuilder
             .UseMySql(Startup.ConnectionString);
 
-        public StoreDbContext(DbContextOptions<StoreDbContext> options)
+        public GummyBearDbContext(DbContextOptions<GummyBearDbContext> options)
             : base(options)
         {
         }
