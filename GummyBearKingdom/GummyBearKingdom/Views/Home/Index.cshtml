@@ -1,7 +1,11 @@
-﻿
+﻿@model IEnumerable<GummyBearKingdom.Models.Product>
 @{
     Layout = "_Layout";
     ViewBag.Title = "GBK - Home";
 }
 
-<h1>This is in home index</h1>
+<h1>Take a look at out Top Products!</h1>
+@foreach (var product in Model)
+{
+    <h2><a href="products/details/@product.ProductId">@product.Name</a></h2>
+}

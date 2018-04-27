@@ -29,9 +29,9 @@ namespace GummyBearKingdom.Models
             return this.ProductId.GetHashCode();
         }
 
-        public string GetAverageRating()
+        public double GetAverageRating()
         {
-            return (Reviews.Sum(r => r.Rating) / (double)Reviews.Count()).ToString("0.0");
+            return (Reviews.Sum(r => r.Rating) / (double)Reviews.Count());
         }
     }
 }

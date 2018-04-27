@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using GummyBearKingdom.Models;
+using Microsoft.EntityFrameworkCore;
 
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -20,10 +21,8 @@ namespace GummyBearKingdom.Controllers
 
         public IActionResult Index(int id)
         {
-            List<Review> model = ReviewRepo.Reviews.Where(r => r.ProductId == id).ToList();
-            Product product = ProductRepo.Products.FirstOrDefault(p => p.ProductId == id);
-            product.Reviews = model;
-            model.ForEach(r => r.ProductId = id);
+            List<Review> model = ReviewRepo.Reviews.Where(r => r.ProductId == id).Include(r => r.Product).ToList();
+            Product product = ProductRepo.Products.Include(p => p.Reviews).FirstOrDefault(p => p.ProductId == id);
             ViewBag.Product = product;
             return View(model);
         }
