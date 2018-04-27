@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.AspNetCore.Mvc;
-using GummyBearKingdom.Controllers;
 using GummyBearKingdom.Models;
 using GummyBearKingdom.Tests;
 using Moq;
