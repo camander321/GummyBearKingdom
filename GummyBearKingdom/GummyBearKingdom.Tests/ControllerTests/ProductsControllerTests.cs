@@ -12,7 +12,7 @@ namespace GummyBearKingdom.Controllers.Tests
     [TestClass]
     public class ProductsControllerTests : IDisposable
     {
-        private Mock<IPoductRepository> mock = new Mock<IPoductRepository>();
+        private Mock<IProductRepository> mock = new Mock<IProductRepository>();
         EFProductRepository db = new EFProductRepository(new TestDbContext());
         private void DbSetup()
         {

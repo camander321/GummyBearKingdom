@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GummyBearKingdom.Models
 {
-    public class EFProductRepository : IPoductRepository
+    public class EFProductRepository : IProductRepository
     {
         GummyBearDbContext db;
         public EFProductRepository()

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GummyBearKingdom.Models
 {
-    public interface IPoductRepository
+    public interface IProductRepository
     {
         IQueryable<Product> Products { get; }
         Product Save(Product product);

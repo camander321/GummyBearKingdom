@@ -1,11 +1,6 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using GummyBearKingdom.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -14,12 +9,11 @@ namespace GummyBearKingdom.Controllers
 {
     public class ProductsController : Controller
     {
-        private IPoductRepository ProductRepo;
-        public ProductsController(IPoductRepository repo = null)
+        private IProductRepository ProductRepo;
+        public ProductsController(IProductRepository repo = null)
         {
-            if (repo == null) ProductRepo = new EFProductRepository();
-            else ProductRepo = repo;
-        } 
+            ProductRepo = repo ?? new EFProductRepository();
+        }
 
         public IActionResult Index()
         {
