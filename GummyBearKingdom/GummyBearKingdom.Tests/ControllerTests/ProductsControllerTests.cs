@@ -59,5 +59,27 @@ namespace GummyBearKingdom.Controllers.Tests
 
             CollectionAssert.Contains(collection, product);
         }
+
+        [TestMethod]
+        public void Mock_PostViewResultCreate_ViewResult()
+        {
+            Product product = new Product { ProductId = 3, Name = "Test 2", Description = "Its another test", Cost = 6 };
+
+            DbSetup();
+            ProductsController controller = new ProductsController(mock.Object);
+            var resultView = controller.Create(product);
+            Assert.IsInstanceOfType(resultView, typeof(RedirectToActionResult));
+
+        }
+
+        [TestMethod]
+        public void DB_CreatesNewEntries_Collection()
+        {
+            ProductsController controller = new ProductsController(db);
+            Product product = new Product { Name = "Test 2", Description = "Its another test", Cost = 6 };
+            var resultView = controller.Create(product);
+            var collection = (controller.Index() as ViewResult).ViewData.Model as List<Product>;
+            CollectionAssert.Contains(collection, product);
+        }
     }
 }
