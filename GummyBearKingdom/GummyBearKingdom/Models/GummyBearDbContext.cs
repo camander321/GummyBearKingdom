@@ -11,6 +11,7 @@ namespace GummyBearKingdom.Models
     {
         public GummyBearDbContext() { }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<BlogPost> BlogPosts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace GummyBearKingdom.Models
 {
@@ -15,23 +16,22 @@ namespace GummyBearKingdom.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public float Cost { get; set; }
+        public virtual List<Review> Reviews { get; set; }
 
         public override bool Equals(System.Object otherProduct)
         {
-            if (!(otherProduct is Product))
-            {
-                return false;
-            }
-            else
-            {
-                Product newProduct = (Product)otherProduct;
-                return this.ProductId.Equals(newProduct.ProductId);
-            }
+            if (!(otherProduct is Product))  return false; 
+            else  return this.ProductId.Equals(((Product)otherProduct).ProductId); 
         }
 
         public override int GetHashCode()
         {
             return this.ProductId.GetHashCode();
+        }
+
+        public double GetAverageRating()
+        {
+            return Reviews.Sum(r => r.Rating) / Reviews.Count();
         }
     }
 }

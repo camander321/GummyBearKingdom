@@ -11,6 +11,7 @@ namespace GummyBearKingdom.Tests
     {
 
         public override DbSet<Product> Products { get; set; }
+        public override DbSet<Review> Reviews { get; set; }
         public override DbSet<BlogPost> BlogPosts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

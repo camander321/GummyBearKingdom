@@ -8,9 +8,10 @@ using GummyBearKingdom.Models;
 namespace GummyBearKingdom.Migrations
 {
     [DbContext(typeof(GummyBearDbContext))]
-    partial class StoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180427192848_AddReviewInContext")]
+    partial class AddReviewInContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");
@@ -70,7 +71,7 @@ namespace GummyBearKingdom.Migrations
             modelBuilder.Entity("GummyBearKingdom.Models.Review", b =>
                 {
                     b.HasOne("GummyBearKingdom.Models.Product", "Product")
-                        .WithMany("Reviews")
+                        .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
