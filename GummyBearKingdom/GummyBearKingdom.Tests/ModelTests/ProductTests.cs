@@ -16,7 +16,7 @@ namespace GummyBearKingdom.Models.Tests
         EFProductRepository db = new EFProductRepository(new TestDbContext());
         public void Dispose()
         {
-            db.RemoveAll();
+            //db.RemoveAll();
         }
 
         [TestMethod]
@@ -26,10 +26,16 @@ namespace GummyBearKingdom.Models.Tests
             CollectionAssert.AreEqual(new List<Product>(), products);
         }
 
-        //[TestMethod]
-        //public void DB_SaveAddsNewProduct_Product()
-        //{
+        [TestMethod]
+        public void DB_SaveAddsNewProduct_Product()
+        {
+            Product product = new Product { Name = "Test 2", Description = "Its another test", Cost = 6 };
+            List<Product> testList = new List<Product>();
 
-        //}
+            testList.Add(product);
+            db.Save(product);
+
+            CollectionAssert.AreEqual(testList, db.Products.ToList());
+        }
     }
 }
