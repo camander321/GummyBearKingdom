@@ -45,6 +45,24 @@ namespace GummyBearKingdom.Controllers.Tests
             var result = controller.Index(mockProduct.Object.Products.FirstOrDefault().ProductId);
             Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
+        [TestMethod]
+        public void Mock_GetViewResultCreateGet_ActionResult() // Confirms route returns view
+        {
+            DbSetup();
+            ReviewsController controller = new ReviewsController(mock.Object);
+            var result = controller.Create();
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+        }
+        [TestMethod]
+        public void Mock_GetViewResultCreatePost_ActionResult() // Confirms route returns view
+        {
+            DbSetup();
+            int productId = mockProduct.Object.Products.FirstOrDefault().ProductId;
+            Review review = new Review { Rating = 2, Content = "some test content", ProductId = productId };
+            ReviewsController controller = new ReviewsController(mock.Object);
+            var result = controller.Create(review);
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+        }
 
         [TestMethod]
         public void Mock_IndexModelContainsProducts_Collection()

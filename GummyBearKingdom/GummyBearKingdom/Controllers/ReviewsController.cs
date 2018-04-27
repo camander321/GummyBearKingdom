@@ -19,5 +19,21 @@ namespace GummyBearKingdom.Controllers
         {
             return View(ReviewRepo.Reviews.Where(r => r.ProductId == productId).ToList());
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Review review)
+        {
+            if (review.RatingInRange() && review.ContentShortEnough())
+            {
+                ReviewRepo.Save(review);
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Create");
+        }
     }
 }
