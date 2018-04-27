@@ -17,8 +17,4 @@
     <ProjectReference Include="..\GummyBearKingdom\GummyBearKingdom.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ModelTests\" />
-  </ItemGroup>
-
 </Project>
