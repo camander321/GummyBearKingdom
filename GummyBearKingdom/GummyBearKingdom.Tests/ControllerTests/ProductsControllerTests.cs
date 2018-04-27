@@ -151,6 +151,18 @@ namespace GummyBearKingdom.Controllers.Tests
             Assert.AreEqual(product, model);
         }
 
+        [TestMethod]
+        public void Mock_DeleteGetModelContainsProduct_Product()
+        {
+            DbSetup();
+            Product product = mock.Object.Products.FirstOrDefault();
+            ProductsController controller = new ProductsController(mock.Object);
+            var resultView = controller.Delete(product.ProductId) as ViewResult;
+            var model = resultView.ViewData.Model as Product;
+            Assert.IsInstanceOfType(model, typeof(Product));
+            Assert.AreEqual(product, model);
+        }
+
 
         [TestMethod]
         public void DB_CreatesNewEntries_Collection()
