@@ -22,7 +22,7 @@
         {
             <tr>
                 <td>@Html.DisplayFor(modelDivision => product.Name)</td>
-                <td>@Html.DisplayFor(modelDivision => product.Cost)</td>
+                <td>@product.Cost.ToString("$0.00")</td>
                 <td>@Html.ActionLink("Details", "Details", new { id = product.ProductId })</td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = product.ProductId }) |

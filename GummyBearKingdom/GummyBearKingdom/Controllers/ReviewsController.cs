@@ -10,19 +10,28 @@ namespace GummyBearKingdom.Controllers
 {
     public class ReviewsController : Controller
     {
+        private IProductRepository ProductRepo;
         private IReviewRepository ReviewRepo;
-        public ReviewsController(IReviewRepository repo = null)
+        public ReviewsController(IProductRepository pRepo = null, IReviewRepository rRepo = null)
         {
-            ReviewRepo = repo ?? new EFReviewRepository();        }
-
-        public IActionResult Index(int productId)
-        {
-            return View(ReviewRepo.Reviews.Where(r => r.ProductId == productId).ToList());
+            ProductRepo = pRepo ?? new EFProductRepository();
+            ReviewRepo = rRepo ?? new EFReviewRepository();
         }
 
-        public IActionResult Create()
+        public IActionResult Index(int id)
         {
-            return View();
+            List<Review> model = ReviewRepo.Reviews.Where(r => r.ProductId == id).ToList();
+            Product product = ProductRepo.Products.FirstOrDefault(p => p.ProductId == id);
+            product.Reviews = model;
+            model.ForEach(r => r.ProductId = id);
+            ViewBag.Product = product;
+            return View(model);
+        }
+
+        public IActionResult Create(int id)
+        {
+            ViewBag.Product = ProductRepo.Products.FirstOrDefault(p => p.ProductId == id);
+            return View(new Review() { ProductId = id });
         }
 
         [HttpPost]
@@ -31,9 +40,9 @@ namespace GummyBearKingdom.Controllers
             if (review.RatingInRange() && review.ContentShortEnough())
             {
                 ReviewRepo.Save(review);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = review.ProductId });
             }
-            return RedirectToAction("Create");
+            return RedirectToAction("Create", new { id = review.ProductId });
         }
     }
 }

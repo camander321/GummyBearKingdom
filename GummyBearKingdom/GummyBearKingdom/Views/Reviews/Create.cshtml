@@ -1,0 +1,22 @@
+﻿@model GummyBearKingdom.Models.Review
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "GBK - Add Review";
+}
+
+<h1>Add A Review For @ViewBag.Product.Name</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.ProductId)
+    @Html.LabelFor(model => model.Rating)<br>
+    @Html.EditorFor(model => model.Rating)<br>
+
+    @Html.LabelFor(model => model.Content)<br>
+    @Html.TextAreaFor(model => model.Content, 5, 80, null)<br>
+
+    <input type="submit" value="Create" class="btn btn-success">
+
+    @Html.ActionLink("Return To Review List", "Index")
+}

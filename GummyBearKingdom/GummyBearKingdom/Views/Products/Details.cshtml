@@ -6,7 +6,7 @@
 }
 
 <h1>@Model.Name</h1>
-<h4>@Model.Cost</h4>
+<h4>@Model.Cost.ToString("$0.00")</h4>
 <p>@Model.Description</p>
 @if (Model.Reviews.Count() == 0)
 {
@@ -16,6 +16,8 @@ else
 {
     <h3>Average Rating: @Model.GetAverageRating()</h3>
 }
+<h4>@Html.ActionLink("Add Review", "Create", "Reviews", new { id = Model.ProductId })</h4>
+<h4>@Html.ActionLink("See All Reviews", "Index", "Reviews", new { id = Model.ProductId })</h4>
 
 
 @Html.ActionLink("Return To Product List", "Index") |
