@@ -38,5 +38,26 @@ namespace GummyBearKingdom.Controllers.Tests
             Assert.IsInstanceOfType(result, typeof(ActionResult));
         }
 
+        [TestMethod]
+        public void Mock_IndexContainsModelData_List() // Confirms model as list of items
+        {
+            DbSetup();
+            ViewResult indexView = new ProductsController(mock.Object).Index() as ViewResult;
+            var result = indexView.ViewData.Model;
+            Assert.IsInstanceOfType(result, typeof(List<Product>));
+        }
+
+        [TestMethod]
+        public void Mock_IndexModelContainsAnimals_Collection()
+        {
+            DbSetup();
+            ProductsController controller = new ProductsController(mock.Object);
+            Product product = new Product { ProductId = 2, Name = "Test 2", Description = "Its another test", Cost = 6 };
+
+            ViewResult indexView = controller.Index() as ViewResult;
+            List<Product> collection = indexView.ViewData.Model as List<Product>;
+
+            CollectionAssert.Contains(collection, product);
+        }
     }
 }
