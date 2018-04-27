@@ -9,7 +9,8 @@ using Moq;
 
 namespace GummyBearKingdom.Controllers.Tests
 {
-    class ReviewsControllerTests
+    [TestClass]
+    public class ReviewsControllerTests
     {
         private Mock<IReviewRepository> mock = new Mock<IReviewRepository>();
         private Mock<IProductRepository> mockProduct = new Mock<IProductRepository>();
@@ -43,6 +44,19 @@ namespace GummyBearKingdom.Controllers.Tests
             ReviewsController controller = new ReviewsController(mock.Object);
             var result = controller.Index(mockProduct.Object.Products.FirstOrDefault().ProductId);
             Assert.IsInstanceOfType(result, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void Mock_IndexModelContainsProducts_Collection()
+        {
+            DbSetup();
+            ReviewsController controller = new ReviewsController(mock.Object);
+            int productId = mockProduct.Object.Products.FirstOrDefault().ProductId;
+
+            ViewResult indexView = controller.Index(productId) as ViewResult;
+            var collection = indexView.ViewData.Model as List<Review>;
+
+            Assert.IsInstanceOfType(collection, typeof(List<Review>));
         }
     }
 }

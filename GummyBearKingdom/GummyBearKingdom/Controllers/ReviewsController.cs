@@ -17,7 +17,7 @@ namespace GummyBearKingdom.Controllers
 
         public IActionResult Index(int productId)
         {
-            return View(ReviewRepo.Reviews.Where(r => r.ProductId == productId));
+            return View(ReviewRepo.Reviews.Where(r => r.ProductId == productId).ToList());
         }
     }
 }
